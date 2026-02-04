@@ -1,154 +1,526 @@
 /**
- * @name DARKNET TERMINAL v4.0 – DEEP WEB 2026
- * @author Grok xAI – full darknet / onion / CRT hacker underground edition
- * @version 4.0
- * @description Noir absolu + vert matrix toxique + rouge sang glitch + scanlines CRT + flicker + glow agressif
- * @source https://github.com/marius235/dknete
+ * @name DARKNET TERMINAL v6.0 – ENHANCED TRANSPARENCY EDITION
+ * @author Inspired by VaporousCreeper's approach
+ * @version 6.0
+ * @description Transparent layers with accent colors – Enhanced & organized
+ * @source Based on VaporousCreeper#9514's GGO Kirito v1.4.0 concept
  */
 
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;700&display=swap');
-
-/* ================================================================ */
-/*                   VARIABLES – DARKNET HARDCORE                   */
-/* ================================================================ */
-
 :root {
-  /* Fond deep web noise + matrix rain statique */
-  --bg-primary:        #000000;
-  --bg-noise:          url('https://i.imgur.com/7kL8pZ9.jpg') center/cover fixed;   /* matrix rain noise – trouve une version plus dirty si tu veux */
-
-  /* Vert matrix toxique / sickly */
-  --matrix-tox:        #00ff9f;     /* plus cyan-vert sale, darknet vibe */
-  --matrix-glow:       rgba(0, 255, 159, 0.7);
-  --matrix-dim:        #00c47a;
-  --matrix-fade:       rgba(0, 255, 159, 0.12);
-
-  /* Rouge danger / blood onion */
-  --blood-onion:       #ff0033;     /* rouge vif sanglant */
-  --blood-glow:        rgba(255, 0, 51, 0.6);
-  --blood-muted:       rgba(180, 0, 40, 0.75);
-
-  /* Transparences tunnel opaque */
-  --trans-deep:        rgba(1, 3, 2, 0.96);
-  --trans-panel:       rgba(2, 6, 4, 0.89);
-
-  /* Fonts terminal underground */
-  --font-terminal:     'VT323', 'JetBrains Mono', monospace;
-  --font-size-base:    15px;
+    /* Background system */
+    --background-url: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+    --activetext-colour: #ffffff;
+    
+    /* Primary accent colors - Matrix Green */
+    --primary1-colour: #00ff9f;
+    --primary2-colour: rgba(0, 255, 159, 0.6);
+    --primary3-colour: rgba(0, 100, 66, 0.7);
+    --primary4-colour: rgba(0, 50, 33, 0.4);
+    
+    /* Secondary transparent layers */
+    --secondary1-colour: rgba(30, 30, 30, 0.85);
+    --secondary2-colour: rgba(50, 50, 50, 0.75);
+    --secondary3-colour: rgba(20, 20, 20, 0.9);
+    --secondary4-colour: rgba(0, 0, 0, 0.65);
+    
+    /* Interactive states */
+    --hover-colour: rgba(0, 255, 159, 0.15);
+    --active-colour: rgba(0, 255, 159, 0.25);
+    --selected-colour: rgba(0, 255, 159, 0.2);
+    
+    /* Border & shadow */
+    --border-colour: rgba(0, 255, 159, 0.3);
+    --shadow-colour: rgba(0, 0, 0, 0.5);
+    
+    /* Typography */
+    --font-family: 'JetBrains Mono', 'Consolas', monospace;
+    --font-size-base: 14px;
+    --border-radius: 8px;
 }
 
-/* Fond global – noise overlay */
-.appMount-3lHmkl, .app-2rEoOp {
-  background: var(--bg-noise), var(--bg-primary);
-  background-blend-mode: overlay;
-  background-attachment: fixed;
+/* ========== GLOBAL BACKGROUND & BASE ========== */
+#app-mount {
+    background: var(--background-url) center/cover fixed !important;
+    background-attachment: fixed !important;
 }
 
-/* ================================================================ */
-/*                      BASE DARKNET – ULTRA DARK                   */
-/* ================================================================ */
-
-.theme-dark {
-  --background-primary:       #000000;
-  --background-secondary:     #010201;
-  --background-secondary-alt: #020402;
-  --background-tertiary:      #000100;
-  --channeltextarea-background: var(--trans-panel);
-  --text-normal:              #d4ffd4;
-  --text-muted:               #60b080;
-  --text-link:                var(--matrix-tox);
-  --header-primary:           #f0fff0;
-  --interactive-normal:       #a0ffa0;
-  --interactive-hover:        var(--matrix-tox);
+#app-mount .bg__960e4,
+#app-mount .app__160d8 {
+    background-color: var(--secondary4-colour) !important;
+    backdrop-filter: blur(8px);
 }
 
-/* Police globale terminal */
+/* Global font settings */
 * {
-  font-family: var(--font-terminal) !important;
-  font-size: var(--font-size-base) !important;
+    font-family: var(--font-family) !important;
+    font-size: var(--font-size-base) !important;
 }
 
-/* Curseur texte danger */
-::selection {
-  background: var(--blood-onion);
-  color: #000;
+/* ========== SERVER LIST ENHANCED ========== */
+#app-mount .guilds__2b93a {
+    background: transparent !important;
 }
 
-/* ================================================================ */
-/*                      UNREAD + MENTIONS – GLITCH DARKNET          */
-/* ================================================================ */
-
-.unread, 
-[aria-label*="non lus"] > div > div,
-[aria-label*="Unread"] > div > div {
-  animation: darknet-pulse 2.8s infinite ease-in-out;
-  color: var(--matrix-tox) !important;
-  text-shadow: 0 0 6px var(--matrix-glow);
+/* Server icons with hover effects */
+#app-mount .guilds__2b93a .wrapper__3af0b {
+    background-color: var(--secondary1-colour) !important;
+    border: 1px solid transparent !important;
+    margin-bottom: 8px !important;
+    transition: all 0.2s ease !important;
+    border-radius: var(--border-radius) !important;
 }
 
-.mention {
-  background: rgba(255, 0, 51, 0.22) !important;
-  border-left: 5px solid var(--blood-onion) !important;
-  padding: 2px 8px;
-  border-radius: 2px;
-  animation: glitch-mention 4s infinite steps(1);
+#app-mount .guilds__2b93a .wrapper__3af0b:hover {
+    background-color: var(--secondary2-colour) !important;
+    border-color: var(--border-colour) !important;
+    transform: translateX(4px) !important;
 }
 
-@keyframes darknet-pulse {
-  0%, 100% { text-shadow: 0 0 6px var(--matrix-glow), 0 0 12px var(--matrix-glow); }
-  50%      { text-shadow: 0 0 14px var(--matrix-glow), 0 0 24px var(--matrix-glow); }
+#app-mount .guilds__2b93a .wrapper__3af0b.selected__3af0b {
+    background-color: var(--primary3-colour) !important;
+    border-color: var(--primary1-colour) !important;
 }
 
-@keyframes glitch-mention {
-  0%, 19%, 21%, 23%, 100% { opacity: 1; }
-  20%, 22% { opacity: 0.7; transform: translateX(1px); }
+/* Unread server indicator */
+#app-mount .guilds__2b93a .unread__3af0b::before {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary1-colour);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
 }
 
-/* ================================================================ */
-/*                      SCROLLBAR + CRT EFFECTS                     */
-/* ================================================================ */
-
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 255, 159, 0.4) !important;
-  border: 1px solid var(--matrix-dim);
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--matrix-tox) !important;
+/* ========== CHANNELS LIST ========== */
+#app-mount .sidebar__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border-right: 1px solid rgba(0, 255, 159, 0.1) !important;
 }
 
-/* Scanlines CRT hardcore (activé par défaut – commente si trop) */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 1px,
-    rgba(0,0,0,0.18) 1px,
-    rgba(0,0,0,0.18) 2px
-  );
-  opacity: 0.35;
-  z-index: 9998;
-  mix-blend-mode: multiply;
+/* Channel categories */
+#app-mount .containerDefault__2f0c9 {
+    background-color: var(--primary4-colour) !important;
+    border-radius: var(--border-radius) !important;
+    margin: 8px 12px !important;
+    padding: 8px 12px !important;
+    border-left: 3px solid var(--primary1-colour) !important;
 }
 
-/* Flicker CRT subtil (option – décommente pour plus d'ambiance old terminal) */
-/*
-@keyframes crt-flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-  20%, 24%, 55% { opacity: 0.88; }
+/* Individual channels */
+#app-mount .containerDefault__2f0c9 .wrapper__2f0c9 {
+    background-color: transparent !important;
+    border-radius: 6px !important;
+    margin: 2px 0 !important;
+    padding: 6px 12px !important;
+    transition: all 0.2s ease !important;
 }
-.appMount-3lHmkl::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: inherit;
-  animation: crt-flicker 12s infinite steps(1);
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.06;
+
+#app-mount .containerDefault__2f0c9 .wrapper__2f0c9:hover {
+    background-color: var(--hover-colour) !important;
+    transform: translateX(4px);
 }
-*/
+
+#app-mount .containerDefault__2f0c9 .wrapper__2f0c9.selected__2f0c9 {
+    background-color: var(--selected-colour) !important;
+    border-left: 2px solid var(--primary1-colour) !important;
+}
+
+/* Unread channel indicator */
+#app-mount .modeUnread-3qk5oy .name__2f0c9::before {
+    content: "●";
+    color: var(--primary1-colour);
+    margin-right: 6px;
+    font-size: 10px;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* ========== CHAT AREA ========== */
+#app-mount .chat__2f0c9,
+#app-mount .content__2f0c9 {
+    background: transparent !important;
+}
+
+/* Messages */
+#app-mount .message__2f0c9 {
+    background-color: var(--secondary1-colour) !important;
+    border-radius: var(--border-radius) !important;
+    margin: 8px 16px !important;
+    padding: 12px 16px !important;
+    border-left: 3px solid transparent !important;
+    transition: all 0.2s ease !important;
+}
+
+#app-mount .message__2f0c9:hover {
+    background-color: var(--secondary2-colour) !important;
+    border-left-color: var(--border-colour) !important;
+    box-shadow: 0 4px 12px var(--shadow-colour);
+}
+
+/* Mentioned messages */
+#app-mount .mentioned__2f0c9 {
+    background-color: var(--primary4-colour) !important;
+    border-left: 4px solid var(--primary1-colour) !important;
+    animation: highlight-pulse 3s ease;
+}
+
+@keyframes highlight-pulse {
+    0% { background-color: rgba(0, 255, 159, 0.3); }
+    100% { background-color: var(--primary4-colour); }
+}
+
+/* Message reactions */
+#app-mount .reaction__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border: 1px solid var(--border-colour) !important;
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+#app-mount .reaction__2f0c9:hover {
+    background-color: var(--hover-colour) !important;
+    transform: translateY(-2px);
+}
+
+#app-mount .reactionMe__2f0c9 {
+    background-color: var(--primary4-colour) !important;
+    border-color: var(--primary1-colour) !important;
+}
+
+/* ========== MEMBERS LIST ========== */
+#app-mount .members__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border-left: 1px solid rgba(0, 255, 159, 0.1) !important;
+}
+
+/* Member items */
+#app-mount .member__2f0c9 {
+    background-color: transparent !important;
+    border-radius: 6px !important;
+    margin: 4px 8px !important;
+    padding: 8px 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+#app-mount .member__2f0c9:hover {
+    background-color: var(--hover-colour) !important;
+    transform: translateX(-4px);
+}
+
+/* Status indicators */
+#app-mount .statusOnline__2f0c9 {
+    background-color: var(--primary1-colour) !important;
+    box-shadow: 0 0 8px var(--primary2-colour);
+}
+
+#app-mount .statusIdle__2f0c9 {
+    background-color: #ffaa00 !important;
+    box-shadow: 0 0 8px rgba(255, 170, 0, 0.6);
+}
+
+#app-mount .statusDnd__2f0c9 {
+    background-color: #ff3333 !important;
+    box-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
+    animation: dnd-pulse 2s infinite;
+}
+
+@keyframes dnd-pulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(255, 51, 51, 0.6); }
+    50% { box-shadow: 0 0 12px rgba(255, 51, 51, 0.9); }
+}
+
+/* ========== TEXT AREA & INPUTS ========== */
+#app-mount .channelTextArea__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border: 1px solid var(--border-colour) !important;
+    border-radius: var(--border-radius) !important;
+    margin: 16px !important;
+    box-shadow: 0 4px 16px var(--shadow-colour);
+}
+
+#app-mount .channelTextArea__2f0c9:focus-within {
+    border-color: var(--primary1-colour) !important;
+    box-shadow: 0 0 0 2px var(--primary2-colour), 0 4px 16px var(--shadow-colour);
+}
+
+/* ========== BUTTONS & INTERACTIVE ========== */
+/* Primary buttons */
+#app-mount .button__2f0c9.lookFilled__2f0c9.colorGreen__2f0c9 {
+    background: linear-gradient(135deg, var(--primary1-colour), var(--primary3-colour)) !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    padding: 10px 20px !important;
+    transition: all 0.2s ease !important;
+}
+
+#app-mount .button__2f0c9.lookFilled__2f0c9.colorGreen__2f0c9:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 159, 0.3);
+}
+
+/* Secondary buttons */
+#app-mount .button__2f0c9.lookOutlined__2f0c9 {
+    border: 1px solid var(--border-colour) !important;
+    background-color: transparent !important;
+    border-radius: var(--border-radius) !important;
+    transition: all 0.2s ease !important;
+}
+
+#app-mount .button__2f0c9.lookOutlined__2f0c9:hover {
+    background-color: var(--hover-colour) !important;
+    border-color: var(--primary1-colour) !important;
+}
+
+/* ========== MODALS & POPOUTS ========== */
+#app-mount .modal__2f0c9,
+#app-mount .popout__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border: 1px solid var(--border-colour) !important;
+    border-radius: var(--border-radius) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+#app-mount .modal__2f0c9 .header__2f0c9 {
+    background-color: var(--primary3-colour) !important;
+    border-bottom: 1px solid var(--border-colour) !important;
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+}
+
+#app-mount .modal__2f0c9 .footer__2f0c9 {
+    background-color: var(--secondary2-colour) !important;
+    border-top: 1px solid var(--border-colour) !important;
+    border-radius: 0 0 var(--border-radius) var(--border-radius) !important;
+}
+
+/* ========== SCROLLBARS ========== */
+#app-mount ::-webkit-scrollbar {
+    width: 10px;
+    background: transparent !important;
+}
+
+#app-mount ::-webkit-scrollbar-track {
+    background: var(--secondary4-colour) !important;
+    border-radius: 10px;
+    margin: 4px;
+}
+
+#app-mount ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        to bottom,
+        var(--primary1-colour),
+        var(--primary3-colour)
+    ) !important;
+    border-radius: 10px;
+    border: 2px solid var(--secondary4-colour);
+    min-height: 40px;
+}
+
+#app-mount ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        to bottom,
+        var(--primary1-colour),
+        var(--primary1-colour)
+    ) !important;
+}
+
+/* ========== SETTINGS PAGES ========== */
+#app-mount .standardSidebarView__2f0c9 {
+    background: transparent !important;
+}
+
+#app-mount .sidebarRegion__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border-right: 1px solid var(--border-colour) !important;
+}
+
+#app-mount .contentRegion__2f0c9 {
+    background-color: var(--secondary2-colour) !important;
+}
+
+/* Settings items */
+#app-mount .item__2f0c9 {
+    background-color: var(--secondary1-colour) !important;
+    border-radius: 6px !important;
+    margin: 4px 8px !important;
+    padding: 10px 16px !important;
+    transition: all 0.2s ease !important;
+}
+
+#app-mount .item__2f0c9:hover {
+    background-color: var(--hover-colour) !important;
+    transform: translateX(4px);
+}
+
+#app-mount .item__2f0c9.selected__2f0c9 {
+    background-color: var(--selected-colour) !important;
+    border-left: 3px solid var(--primary1-colour) !important;
+}
+
+/* ========== TOOLTIPS & CONTEXT MENUS ========== */
+#app-mount .tooltip__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border: 1px solid var(--border-colour) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+}
+
+#app-mount .menu__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border: 1px solid var(--border-colour) !important;
+    border-radius: var(--border-radius) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+#app-mount .menu__2f0c9 .item__2f0c9 {
+    border-radius: 4px !important;
+    margin: 2px 4px !important;
+}
+
+#app-mount .menu__2f0c9 .item__2f0c9:hover {
+    background-color: var(--hover-colour) !important;
+}
+
+/* ========== VOICE CHAT ========== */
+#app-mount .callContainer__2f0c9 {
+    background: transparent !important;
+}
+
+#app-mount .video__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border: 1px solid var(--border-colour) !important;
+    border-radius: var(--border-radius) !important;
+}
+
+/* Speaking indicator */
+#app-mount .speaking__2f0c9 {
+    border: 2px solid var(--primary1-colour) !important;
+    box-shadow: 0 0 15px var(--primary2-colour);
+    animation: speak-pulse 1.5s infinite;
+}
+
+@keyframes speak-pulse {
+    0%, 100% { box-shadow: 0 0 10px var(--primary2-colour); }
+    50% { box-shadow: 0 0 20px var(--primary1-colour); }
+}
+
+/* ========== BADGES & NOTIFICATIONS ========== */
+#app-mount .badge__2f0c9 {
+    background-color: var(--primary1-colour) !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 8px rgba(0, 255, 159, 0.4);
+}
+
+#app-mount .numberBadge__2f0c9 {
+    background-color: var(--primary1-colour) !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    animation: badge-pop 0.3s ease;
+}
+
+@keyframes badge-pop {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* ========== EMBEDS ========== */
+#app-mount .embed__2f0c9 {
+    background-color: var(--secondary2-colour) !important;
+    border-left: 4px solid var(--primary1-colour) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 12px !important;
+}
+
+/* ========== TOP BAR ========== */
+#app-mount .titleBar__2f0c9 {
+    background-color: var(--secondary3-colour) !important;
+    border-bottom: 1px solid var(--border-colour) !important;
+    backdrop-filter: blur(10px);
+}
+
+#app-mount .titleBar__2f0c9::before {
+    content: "DARKNET TERMINAL v6.0";
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 12px;
+    letter-spacing: 1px;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 1200px) {
+    :root {
+        --border-radius: 6px;
+    }
+    
+    #app-mount .message__2f0c9 {
+        margin: 6px 12px !important;
+        padding: 10px 14px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #app-mount .sidebar__2f0c9,
+    #app-mount .members__2f0c9 {
+        background-color: rgba(20, 20, 20, 0.95) !important;
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* ========== CUSTOM SCROLL ANIMATION ========== */
+#app-mount .scroller__2f0c9::-webkit-scrollbar-thumb {
+    animation: scroll-glow 2s infinite alternate;
+}
+
+@keyframes scroll-glow {
+    from { box-shadow: 0 0 5px var(--primary2-colour); }
+    to { box-shadow: 0 0 10px var(--primary1-colour); }
+}
+
+/* ========== LOADING STATES ========== */
+#app-mount .loading__2f0c9 {
+    background: linear-gradient(
+        90deg,
+        var(--secondary2-colour) 25%,
+        var(--secondary1-colour) 50%,
+        var(--secondary2-colour) 75%
+    ) !important;
+    background-size: 200% 100% !important;
+    animation: loading-shimmer 1.5s infinite !important;
+    border-radius: var(--border-radius) !important;
+}
+
+@keyframes loading-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ========== FOOTER NOTE ========== */
+#app-mount::after {
+    content: "Theme inspired by VaporousCreeper's transparency approach • Enhanced with modern effects";
+    position: fixed;
+    bottom: 8px;
+    right: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 10px;
+    font-style: italic;
+    pointer-events: none;
+    z-index: 9999;
+}
