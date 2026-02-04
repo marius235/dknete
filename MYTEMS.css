@@ -1,0 +1,87 @@
+/**
+ * @name Darknet Terminal v3.0 – 2026 Edition
+ * @author Grok xAI (inspiré structure GGO Kirito)
+ * @description Ultra darknet / matrix / CRT hacker theme – noir absolu + vert matrix + rouge danger
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+
+/* ================================================================ */
+/*                      VARIABLES (comme ton exemple qui marche)    */
+/* ================================================================ */
+
+:root {
+  /* Fond matrix rain / noise */
+  --background: url('https://i.imgur.com/7kL8pZ9.jpg') center/cover fixed;   /* change par ton image préférée */
+  
+  /* Couleurs principales */
+  --main-theme-color: #00ff41;                    /* vert matrix authentique */
+  --main-theme-color-hover: #40ff80;
+  --main-theme-color-dim: #00b82e;
+  
+  --danger-red: #d40032;                          /* rouge sang danger */
+  --danger-glow: rgba(212, 0, 50, 0.45);
+  
+  /* Variables Discord natives (override) */
+  --background-primary: #000000;
+  --background-secondary: #020402;
+  --background-secondary-alt: #030603;
+  --background-tertiary: #010301;
+  --background-accent: rgba(0, 255, 65, 0.08);
+  
+  --text-normal: hsl(150, 80%, 92%);
+  --text-muted: hsl(150, 40%, 68%);
+  --text-link: #00ff41;
+  --header-primary: #f0fff0;
+  --header-secondary: hsl(150, 60%, 82%);
+  
+  --interactive-normal: hsl(150, 45%, 75%);
+  --interactive-hover: #00ff41;
+  
+  --channeltextarea-background: rgba(5, 10, 8, 0.88);
+}
+
+/* ================================================================ */
+/*                      OVERRIDES & ANIMATIONS                      */
+/* ================================================================ */
+
+.theme-dark {
+  --background-primary: var(--background-primary);
+  --background-secondary: var(--background-secondary);
+}
+
+/* Glow unread serveurs */
+[aria-label*="non lus"], [aria-label*="Unread"] {
+  animation: matrix-glow 3s infinite ease-in-out;
+}
+
+@keyframes matrix-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 255, 65, 0.4); }
+  50%      { box-shadow: 0 0 16px rgba(0, 255, 65, 0.7); }
+}
+
+/* Mentions danger */
+.mention {
+  background: rgba(212, 0, 50, 0.22) !important;
+  border-left: 3px solid var(--danger-red) !important;
+}
+
+/* Texte sélection matrix */
+::selection {
+  background: rgba(0, 255, 65, 0.35);
+  color: #000;
+}
+
+/* Scrollbar verte */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 65, 0.3) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 65, 0.5) !important;
+}
+
+/* Nouveau messages bar rouge danger */
+.newMessagesBar-265mhP {
+  background: var(--danger-red) !important;
+}
